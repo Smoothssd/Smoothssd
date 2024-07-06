@@ -88,14 +88,14 @@ export default function Index() {
                     <NavBar></NavBar>
                     <div className='conter'>
                         <Routes>
-                            <Route path={"/proj2"} element={<Home />}></Route>
-                            <Route path={"/proj2/Home"} element={<Home />}></Route>
-                            <Route path={"/proj2/About"} element={<About />}></Route>
-                            <Route path={"/proj2/Exhibition"} element={<Exhibition />}></Route>
-                            <Route path={"/proj2/Artist"} element={<Artist />}></Route>
-                            <Route path={"/proj2/Contact"} element={<Contact />}></Route>
-                            <Route path={"/proj2/Date"} element={<Date />}></Route>
-                            <Route path={"/proj2/ProductDetails"} element={<ProductDetails />}></Route>
+                            <Route path={"/"} element={<Home />}></Route>
+                            <Route path={"/Home"} element={<Home />}></Route>
+                            <Route path={"/About"} element={<About />}></Route>
+                            <Route path={"/Exhibition"} element={<Exhibition />}></Route>
+                            <Route path={"/Artist"} element={<Artist />}></Route>
+                            <Route path={"/Contact"} element={<Contact />}></Route>
+                            <Route path={"/Date"} element={<Date />}></Route>
+                            <Route path={"/ProductDetails"} element={<ProductDetails />}></Route>
                         </Routes>
                     </div>
                     <Footer></Footer>
