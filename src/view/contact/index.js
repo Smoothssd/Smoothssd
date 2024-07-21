@@ -1,7 +1,8 @@
 import React from 'react';
 import './style.css'
 import img2 from '../../assets/2.webp'
-import { Button, Form, Input,ConfigProvider } from 'antd';
+import { Button, Form, Input, ConfigProvider } from 'antd';
+import { useSelector } from "react-redux";
 const layout = {
     labelCol: {
         span: 8,
@@ -28,21 +29,22 @@ const onFinish = (values) => {
     console.log(values);
 };
 const App = () => {
-
+    const { type } = useSelector((state) => state)
     return (
         <div className='contact_box'>
             <img src={img2} />
-            <h1>Contact Us</h1>
+            <h1>{type === 'en' ? 'Contact Us' : "联系我们"} </h1>
             <p>
-                Discover the captivating world of art at our upcoming exhibition! Showcasing a diverse array of masterpieces, our gallery invites you to embark on a visual journey. Stay connected with us for updates, exclusive sneak peeks, and to book your personal viewing experience. Join our community and be inspired by the beauty of art. Connect with us now to embark on this artistic adventure!
+                {type === 'en' ? 'Discover the captivating world of art at our upcoming exhibition! Showcasing a diverse array of masterpieces, our gallery invites you to embark on a visual journey. Stay connected with us for updates, exclusive sneak peeks, and to book your personal viewing experience. Join our community and be inspired by the beauty of art. Connect with us now to embark on this artistic adventure!' : "在即将到来的展览中探索迷人的艺术世界！我们的画廊展示了各种各样的杰作，邀请您踏上视觉之旅。与我们保持联系，了解最新动态、独家预览，并预订您的个人观看体验。加入我们的社区，受到艺术之美的启发。现在就与我们联系，开始这场艺术冒险吧！"}
+
 
             </p>
             <ConfigProvider
                 theme={{
                     components: {
                         Form: {
-                            labelFontSize:30,
-                            itemMarginBottom:100
+                            labelFontSize: 30,
+                            itemMarginBottom: 100
                         },
                         Button: {
                             defaultHoverColor: 'rgb(166, 25, 46)',
@@ -59,13 +61,13 @@ const App = () => {
                     name="nest-messages"
                     onFinish={onFinish}
                     style={{
-                        width:'80%',
+                        width: '80%',
                     }}
                     validateMessages={validateMessages}
                 >
                     <Form.Item
                         name={['user', 'Name']}
-                        label="Name"
+                        label={type === 'en' ? "Name" : '姓名'}
                         rules={[
                             {
                                 required: true,
@@ -76,7 +78,7 @@ const App = () => {
                     </Form.Item>
                     <Form.Item
                         name={['user', 'Email']}
-                        label="Email"
+                        label={type === 'en' ? "Email" : '邮箱'}
 
                         rules={[
                             {
@@ -87,10 +89,16 @@ const App = () => {
                         <Input />
                     </Form.Item>
 
-                    <Form.Item name={['user', 'Address']} label="Address">
+                    <Form.Item name={['user', 'Address']}
+
+                        label={type === 'en' ? "Address" : '地址'}
+                    >
                         <Input />
                     </Form.Item>
-                    <Form.Item name={['user', 'Message']} label="Message">
+                    <Form.Item name={['user', 'Message']}
+                        label={type === 'en' ? "Message" : '留言'}
+
+                    >
                         <Input.TextArea />
                     </Form.Item>
                     <Form.Item
@@ -99,10 +107,10 @@ const App = () => {
                             offset: 8,
                         }}
                     >
-                        
-                        <Button  ghost htmlType="submit">
-                        Submit
-                    </Button>
+
+                        <Button ghost htmlType="submit">
+                            {type === 'en' ? "Submit" : '提交'}
+                        </Button>
                     </Form.Item>
                 </Form>
             </ConfigProvider>

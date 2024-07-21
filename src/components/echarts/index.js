@@ -1,12 +1,15 @@
-import React,{ useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as echarts from "echarts";
 
 function Chart({ options, Width, Height }) {
     const chartRef = useRef(null);
     let chartInstance = null;
 
+
     // 定义渲染函数
     function renderChart() {
+        console.log(123);
+        console.log(options);
         try {
 
             const renderedInstance = echarts.getInstanceByDom(chartRef.current);
@@ -23,9 +26,7 @@ function Chart({ options, Width, Height }) {
     }
 
 
-    function resizeHandler() {
-        chartInstance.resize();
-    }
+
 
 
     useEffect(() => {
@@ -38,10 +39,6 @@ function Chart({ options, Width, Height }) {
     }, []);
 
 
-    useEffect(() => {
-        window.addEventListener("resize", resizeHandler);
-        return () => window.removeEventListener("resize", resizeHandler);
-    }, []);
 
     return (
         <div>
